@@ -141,7 +141,7 @@
                                                 @enderror
                                                 <lable for="checkin_time">เวลา</lable>
                                                 <br /><br />
-                                                <a class="btn btn-secondary"></a> ว่าง  <button class="btn btn-success"></button> มีการจอง <br>
+                                                <a class="btn btn-secondary"></a> ว่าง  <button class="btn btn-danger"></button> มีการจอง <br>
                                                 <br><br>                                         
                                                 <div class="container" id ="slotbtn">
                                                     <!-- <button type="button"  class="btn btn-secondary time-slot ms-2 mb-2" data-start-time="07:00" data-end-time="08:00">07:00-08:00</button> 
@@ -197,16 +197,16 @@
                                     initial_time_id = parseInt(document.getElementById("slotbtn").getElementsByTagName("Button")[0].textContent.split(':')[0]);
 
                                     slotbtn_list = document.getElementById("slotbtn").getElementsByTagName("Button");
-                                    Array.from(slotbtn_list).forEach(s => { s.disabled = false; s.classList.remove("btn-success"); });
+                                    Array.from(slotbtn_list).forEach(s => { s.disabled = false; s.classList.remove("btn-danger"); });
                                                 for(var i=0 ; i < transactions.length ; i++){
                                                     time_id = parseInt(transactions[i]['checkin_time'].split(':')[0]);
                                                     index = time_id - initial_time_id;
                                                     if (transactions[i]['field_id'] === field_id) {
                                                         slotbtn_list[index].disabled = true;
-                                                        slotbtn_list[index].classList.add("btn-success");
+                                                        slotbtn_list[index].classList.add("btn-danger");
                                                         for(var j=1 ; j < transactions[i]['hour'] ; j++){
                                                             slotbtn_list[index + j].disabled = true;
-                                                            slotbtn_list[index + j].classList.add("btn-success");
+                                                            slotbtn_list[index + j].classList.add("btn-danger");
                                                         }
                                                     }
                                                 }

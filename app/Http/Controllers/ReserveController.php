@@ -64,14 +64,16 @@ class ReserveController extends Controller
     
     public function checkoutsuccess(Request $request){
         $request->validate([
-            'expenses'=> 'required',
+            "expensetype" => 'required',
+            'expenses' => 'required',
         ],
         [
-            'expenses.required'=>"กรุณากรอกค่าใช่จ่ายเพิ่มเติม",
-            
+            "expensetype.required" => 'กรุณากรอกประเภทค่าใช้จ่าย',
+            'expenses.required' => "กรุณากรอกค่าใช่จ่ายเพิ่มเติม",
         ]);
         DB::transaction(function () use ($request) {
             $transaction = Transaction::find($request->id);
+            $transaction->expensetype = $request->expensetype;
             $transaction->expenses = $request->expenses;
             $transaction->status = 'check out';
             $transaction->save();

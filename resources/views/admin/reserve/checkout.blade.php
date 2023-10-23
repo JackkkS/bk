@@ -31,10 +31,10 @@
                             <th scope="col">เวลาการเข้าใช้บริการ</th>
                             <th scope="col">ชั่วโมงในการจอง</th>
                             <th scope="col">เวลาออก</th>
-                            <th scope="col">สถานะ</th>
                             <th scope="col">ค่าสนามกีฬา</th>
+                            <th scope="col">ประเภทค่าใช้จ่ายอื่นๆ</th>
                             <th scope="col">ค่าใช้จ่ายอื่นๆ</th>
-                            <th scope="col">บิล</th>
+                            <th scope="col">ยอดรวม</th>
 
 
                         </tr>
@@ -58,11 +58,11 @@
                             <td>{{$row->checkin_time}}</td>
                             <td>{{$row ->hour}}</td>
                             <td>{{$row ->checkout_time}}</td>
-                            <td>{{$row ->status}}</td>
                             <td>{{$subtotal}}</td>
+                            <td>{{$row->expensetype}}</td>
                             <td>{{$row ->expenses}}</td>
                             <td>{{$bill}}</td>
-                            <td>ชำระแล้ว</td>
+                            
                             
                             
                         </tr>

@@ -31,7 +31,7 @@
                             </div>
 
                             @foreach($field_reserve as $row)
-                            @if($row->field_status === 'เปิดใช้งาน')
+                          
                             <div class="card mb-4 bg-light" >
                                 <div class="row no-gutters">
                                     <div class="col-md-4">
@@ -45,12 +45,16 @@
                                             <p class="card-text" style="color:#00ff00;">ราคา {{$row ->price}}บาท</p>
                                             </div>
                                             <br /><br /><br /><br /><br /><br /><br /><br /><br />
+                                            @if($row->field_status === 'ปิดปรับปรุง')
+                                            <button style = "margin-left:680px;" href ="{{url('/detail/'.$row->field_id)}}" disabled class="btn btn-danger"><i class="glyphicon glyphicon-list"></i> สนามกีฬาปิดปรับปรุง</button>
+                                            @else
                                             <a style = "margin-left:680px;" href ="{{url('/detail/'.$row->field_id)}}" class="btn btn-info"><i class="glyphicon glyphicon-list"></i> ดูข้อมูลเพิ่มเติม</a>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            @endif
+                           
                             @endforeach
                         </div>
 

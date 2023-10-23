@@ -14,9 +14,13 @@
 		<div class = "panel panel-default">
 			<div class = "panel-body">
 				<div class = "alert alert-info">ค่าใช้จ่ายอื่นๆ</div>
+				@error('expensetype')
+                    	<div class="alert alert-danger">{{$message}}</div>
+                @enderror
                 @error('expenses')
                     	<div class="alert alert-danger">{{$message}}</div>
                 @enderror
+				
 				<form method="POST" action="{{ url('/admin/reserve/checkoutsuccess/'.$transaction->transaction_id) }}">
 					@csrf
 					<div class="form-inline" style="float:left;">
@@ -42,14 +46,16 @@
 						<br />
 						<input type="text" value="{{$transaction->hour}}" class="form-control" size="20" disabled="disabled" />
 					</div>
-
+					
+					<div class="form-inline" style="float:left; margin-left:20px;">
+						<label>โปรดระบุประเภทค่าใช้จ่าย เช่น ค่าไฟ,ค่าน้ำดื่ม,ค่ากรรมการ</label>
+						<br />
+						<input type="text" name="expensetype" class="form-control" /> 
+					</div>
 					<div class="form-inline" style="float:left; margin-left:20px;">
 						<label>ค่าใช้จ่ายอื่นๆ</label>
 						<br />
 						<input type="number" min="0" max="999999" name="expenses" class="form-control" /> 
-					</div>
-					<div class="form-inline" style="float:left; margin-left:20px;">
-						<label style="color:#ff0000;">*ค่าใช้จ่ายอื่นๆ อย่างเช่น ค่าไฟ ค่าน้ำดื่ม ค่ากรรมการ(คิดแยกจากค่าสนามกีฬา)</label>
 					</div>
 					
 					<br style="clear:both;" />

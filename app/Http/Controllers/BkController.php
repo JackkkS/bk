@@ -185,6 +185,7 @@ class BkController extends Controller
                 $transaction->checkout = $request->checkin;
                 $checkout_time = $datetime_start->addHours($request->hour)->format('H:i:s');
                 $transaction->checkout_time = $checkout_time;
+                $transaction->expensetype = "";
                 $transaction->expenses = '0';
                 $transaction->payment = 'ยังไม่ได้ชำระเงิน';
                 $transaction->save();
